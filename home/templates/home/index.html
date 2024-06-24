@@ -1,0 +1,98 @@
+{% load static %}
+{% load extras %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Notizen</title>
+    <link rel="stylesheet" href="{% static 'home/css/index.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="sidebar notebooks">
+        <h2>Notizbücher</h2>
+        <ul>
+            <li class="notizbuch-link"><a href="#" onclick="showPages('notizbuch1')">Notizbuch 1</a></li>
+            <li class="notizbuch-link"><a href="#" onclick="showPages('notizbuch2')">Notizbuch 2</a></li>
+            <li class="notizbuch-link"><a href="#" onclick="showPages('notizbuch3')">Notizbuch 3</a></li>
+        </ul>
+    </div>
+    <div class="sidebar pages">
+        <h2>Seiten</h2>
+        <ul id="pages-list">
+            <!-- Seiten werden hier dynamisch eingefügt -->
+        </ul>
+    </div>
+    <div class="main-content">
+        <main>
+            <header>
+                <h3 class="note-title">Funktioniert leider immer noch nicht</h3>
+            </header>
+            <div class="notes">
+                <div class="note-card">
+                    <p class="note-date">24.06.2024</p>
+                    <p class="note-content">The provided information reveals the issue preventing your link styles from
+                        working as expected. It's a combination of factors:
+
+                        Inline Styles:
+
+                        The empty inline style attribute (style=" ") on your <a> element might be overriding the styles
+                            you're trying to apply through CSS classes. Even though it's empty, it still has higher
+                            specificity than external CSS rules.
+
+                            User Agent Stylesheet:
+
+                            The browser's default stylesheet (user agent stylesheet) defines styles for various HTML
+                            elements like <a>,
+                                <li>, and
+                                    <ul>. These can sometimes interfere with your custom styles, especially if they have
+                                        lower specificity.
+
+                                        Solution:
+
+                                        Remove Inline Styles:
+
+                                        Completely remove the style attribute from your <a> element. This ensures that
+                                            external CSS rules have full control over the styling.
+
+                                            HTML
+                                            <a href="#" onclick="showPages('notizbuch1')" class="notizbuch-link">Notizbuch
+                                                1</a>
+                                            Verwende den Code mit Vorsicht.
+                                            content_copy
+                                            Increase Specificity (Optional):
+
+                                            If you're still encountering issues with the user agent styles, you can
+                                            increase the specificity of your CSS rule by adding an ID selector or
+                                            additional class names. However, this should be a last resort as it can make
+                                            your CSS harder to maintain.
+
+                                            Updated CSS:</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    function showPages(notizbuch) {
+        var pagesList = document.getElementById('pages-list');
+        pagesList.innerHTML = ''; // Clear the list first
+
+        var pages = {
+            notizbuch1: ['Seite 1', 'Seite 2', 'Seite 3'],
+            notizbuch2: ['Seite A', 'Seite B', 'Seite C'],
+            notizbuch3: ['Seite X', 'Seite Y', 'Seite Z']
+        };
+
+        pages[notizbuch].forEach(function(page) {
+            var li = document.createElement('li');
+            li.textContent = page;
+            pagesList.appendChild(li);
+        });
+    }
+</script>
+</body>
+</html>
+
+
