@@ -11,7 +11,7 @@ class User(AbstractUser):
             self.display_name = f'{self.first_name} {self.last_name}'
         super().save(*args, **kwargs)
 
-    def __ste__(self):
+    def __str__(self):
         return f'{self.display_name}'
 
     class Meta:
