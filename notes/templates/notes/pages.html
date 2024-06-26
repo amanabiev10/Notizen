@@ -1,4 +1,4 @@
-<!-- index.html -->
+<!-- pages.html -->
 {% extends 'home/base.html' %}
 {% load static %}
 {% load extras %}
@@ -6,36 +6,37 @@
 
 {% block css %}
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'home/css/index.css' %}">
+<link rel="stylesheet" href="{% static 'notes/css/pages.css' %}">
 {% endblock %}
 
 {% block main %}
-    <div>
-        <div class="note-has-grid">
-            {% for page in pages %}
-            <div class="single-note-item">
-                <div class="card">
-                    <h5 class="note-title">{{ page.title }}<i class="point fa fa-circle ml-1 font-10"></i></h5>
-                    <p class="note-date">{{ page.updated_at }}</p>
-                    <div class="note-content">
-                        <p class="note-inner-content">{{ page.content|truncate_words:20|safe }}</p>
+<div>
+    <div class="note-has-grid">
+        {% for page in pages %}
+        <div class="single-note-item">
+            <div class="card">
+                <h5 class="note-title">{{ page.title }}<i class="point fa fa-circle ml-1 font-10"></i></h5>
+                <p class="note-date">{{ page.updated_at }}</p>
+                <div class="note-content">
+                    <p class="note-inner-content">{{ page.content_html_safe|truncatewords_html:20 }}</p>
+                </div>
+                <div class="d-flex align-items-end justify-content-between">
+                    <div>
+                        <span class="ml-1"><i class="fa fa-star favourite-note"></i></span>
+                        <span class="ml-1"><i class="fa fa-trash remove-note"></i></span>
                     </div>
-                    <div class="d-flex align-items-end justify-content-between">
-                        <div>
-                            <span class="ml-1"><i class="fa fa-star favourite-note"></i></span>
-                            <span class="ml-1"><i class="fa fa-trash remove-note"></i></span>
-                        </div>
-                        <div class="btn-group">
-                            <button>bearbeiten</button>
-                            <button>löschen</button>
-                        </div>
+                    <div class="btn-group">
+                        <button>bearbeiten</button>
+                        <button>löschen</button>
                     </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
+</div>
 {% endblock %}
+
 
 {% block script %}
 {% endblock %}

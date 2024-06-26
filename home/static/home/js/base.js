@@ -32,7 +32,10 @@ function addNotebook() {
         },
         success: function(data) {
             var li = document.createElement('li');
-            li.innerHTML = '<a href="#" onclick="showPages(' + data.id + ')">' + data.title + '</a>';
+            li.onclick = function() {
+                showPages(data.id);
+            };
+            li.innerHTML = '<a href="#">' + data.title + '</a>';
             document.getElementById('notebooks-list').appendChild(li);
             document.getElementById('new-notebook-title').value = '';
         },

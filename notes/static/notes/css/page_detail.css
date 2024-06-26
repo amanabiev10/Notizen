@@ -1,0 +1,110 @@
+
+.page-detail-container {
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.page-header h1 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+}
+
+.page-date {
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.page-content {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Styles für die Notizen */
+.note-has-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.single-note-item {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.note-title {
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.point {
+    color: #aaa;
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.note-date {
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.note-content {
+    margin-top: 10px;
+}
+
+.note-inner-content {
+    margin: 0;
+}
+
+.favourite-note,
+.remove-note {
+    color: #aaa;
+    cursor: pointer;
+}
+
+.btn-group {
+    margin-top: 10px;
+}
+
+.btn-group button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.btn-group button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsives Design */
+@media (max-width: 768px) {
+    .note-has-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -14,10 +14,10 @@
 <body>
     <div class="container">
         <div class="sidebar notebooks">
-            <h2>Notizbücher</h2>
+            <h2>Notizen</h2>
             <ul id="notebooks-list">
                 {% for note in notes %}
-                <li><a href="#" onclick="showPages({{ note.id }})">{{ note.title }}</a></li>
+                <li onclick="showPages({{ note.id }})"><a href="{% url 'notes:pages_views' note_id=note.pk %}"">{{ note.title }}</a></li>
                 {% endfor %}
             </ul>
             <input class="notebook-add" type="text" id="new-notebook-title" placeholder="Titel eingeben">

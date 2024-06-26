@@ -3,7 +3,7 @@ from notes.models import Note, Page
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.safestring import mark_safe
-import markdown2
+import markdown
 
 
 def index(request):
@@ -15,7 +15,7 @@ def index(request):
         for note in notes:
             pages = Page.objects.filter(note=note)
             for page in pages:
-                page.content_html = markdown2.markdown(page.content)
+                page.content_html = markdown.markdown(page.content)
                 page.content_html_safe = mark_safe(page.content_html)
                 pages_list.append(page)
 
