@@ -1,0 +1,51 @@
+<!-- base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'home/css/base.css' %}">
+    {% block css %}
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'home/js/base.js' %}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar notebooks">
+            <h2>Notizbücher</h2>
+            <ul id="notebooks-list">
+                {% for note in notes %}
+                <li><a href="#" onclick="showPages({{ note.id }})">{{ note.title }}</a></li>
+                {% endfor %}
+            </ul>
+            <input class="notebook-add" type="text" id="new-notebook-title" placeholder="Titel eingeben">
+            <button onclick="addNotebook()">Hinzufügen</button>
+        </div>
+        <div class="sidebar pages">
+            <h2>Seiten</h2>
+            <ul id="pages-list">
+                <!-- Seiten werden hier dynamisch eingefügt -->
+            </ul>
+            <input type="hidden" id="current-note-id" value="">
+            <input class="page-add" type="text" id="new-page-title" placeholder="Titel eingeben">
+            <button onclick="addPage()">Hinzufügen</button>
+        </div>
+        <div class="main-content">
+            <header>
+                <h1>Notizen</h1>
+            </header>
+            <main>
+                <!-- Main content goes here -->
+                {% block main %}
+                {% endblock %}
+            </main>
+        </div>
+    </div>
+    <!-- CSRF Token hinzufügen -->
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    {% block script %}
+    {% endblock %}
+</body>
+</html>

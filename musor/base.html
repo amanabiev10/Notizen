@@ -1,0 +1,22 @@
+{% load static %}
+{% load extras %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'home/css/base.css' %}">
+    {% block css %} {% endblock %}
+</head>
+<body>
+{% block container %}
+
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}
+</body>
+</html>
+
+
