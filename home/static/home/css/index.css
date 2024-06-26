@@ -59,4 +59,17 @@
 .btn-group {
     margin-left: auto;  /* Aligns btn-group to the right */
     display: flex;
+    gap: 10px;
+}
+.btn-group button {
+    background-color: #3e4145c7;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-group button:hover {
+    background-color: #0056b3;
 }

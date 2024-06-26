@@ -76,6 +76,7 @@ header {
     background-color: #fff;
     padding: 20px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
 }
 
 header h1 {
@@ -146,7 +147,7 @@ main {
 }
 
 /* Style the add buttons */
-.sidebar button {
+.sidebar .add-button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -159,6 +160,6 @@ main {
     transition: background 0.3s;
 }
 
-.sidebar button:hover {
-    background-color: #707070;
+.sidebar .add-button:hover {
+    background-color: #fff;
 }
