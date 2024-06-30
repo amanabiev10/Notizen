@@ -17,7 +17,7 @@
             <h2>Notizen</h2>
             <ul id="notebooks-list">
                 {% for note in notes %}
-                <li onclick="showPages({{ note.id }})"><a href="{% url 'notes:pages_views' note_id=note.pk %}"">{{ note.title }}</a></li>
+                <a class="notes-list" href="{% url 'notes:notes_views' note_id=note.pk %}"><li onclick="showPages({{ note.id }})">{{ note.title }}</li></a>
                 {% endfor %}
             </ul>
             <input class="notebook-add" type="text" id="new-notebook-title" placeholder="Titel eingeben">

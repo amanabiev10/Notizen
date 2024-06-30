@@ -24,6 +24,11 @@ body {
     background-color: #2d2d2d;
     color: white;
 }
+.notes-list {
+    color: #fff; /* Farbe des Links vererben */
+    cursor: default; /* Standard-Cursor verwenden */
+    text-decoration: none; /* Keine Unterstreichung */
+}
 
 .pages {
     width: 200px;
