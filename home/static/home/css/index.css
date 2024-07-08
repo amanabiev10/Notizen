@@ -9,6 +9,12 @@
     padding-bottom: 20px;
 }
 
+.page-link {
+    color: inherit; /* Farbe des Links vererben */
+    cursor: default; /* Standard-Cursor verwenden */
+    text-decoration: none; /* Keine Unterstreichung */
+}
+
 .card {
     border: 1px solid #ddd;
     border-radius: 5px;
