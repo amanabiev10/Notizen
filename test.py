@@ -10,3 +10,5 @@ from accounts.models import User
 max = User.objects.get(username='max')
 max.set_password('Start123')
 max.save()
+
+#test
