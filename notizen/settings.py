@@ -38,13 +38,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Drittanbieter-Apps
+    'rest_framework',
+    'corsheaders',
+    'rest_framework_simplejwt',
+
     # My Applications
     'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig',
-    'notes.apps.NotesConfig'
+    'notes.apps.NotesConfig',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # CORS Middleware
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,6 +59,46 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+# Optionale Einstellungen für JWT (z.B. Token-Lebensdauer)
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+}
+
+# Erlaube Anfragen von spezifischen Domains
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # URL deines React-Frontends während der Entwicklung
+    "http://localhost:5173",
+    # Weitere URLs, wenn nötig
+]
+
+# Erlaube spezifische Methoden (GET, POST, etc.)
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+]
+
+# Erlaube bestimmte Header
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+    # Weitere Header falls benötigt
 ]
 
 ROOT_URLCONF = 'notizen.urls'
@@ -133,6 +180,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # URL-Prefix für Mediendateien (Datei-Uploads)
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Verzeichnis, in dem hochgeladene Mediendateien gespeichert werden
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

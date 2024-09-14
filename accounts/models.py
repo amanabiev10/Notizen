@@ -7,8 +7,7 @@ class User(AbstractUser):
     created_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
-        if not self.pk:
-            self.display_name = f'{self.first_name} {self.last_name}'
+        self.display_name = f'{self.first_name} {self.last_name}'
         super().save(*args, **kwargs)
 
     def __str__(self):

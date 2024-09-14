@@ -1,14 +1,14 @@
-import os
-import django
+import requests
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'notizen.settings')
+url = 'http://127.0.0.1:8000/api/notes/'
 
-django.setup()
+# GET-Anfrage
+response = requests.get(url)
 
-from accounts.models import User
-
-max = User.objects.get(username='max')
-max.set_password('Start123')
-max.save()
-
-#test
+# Überprüfen, ob die Anfrage erfolgreich war
+if response.status_code == 200:
+    # JSON-Antwort anzeigen
+    print("Erfolgreiche Antwort:")
+    print(response.json())
+else:
+    print(f"Fehler: {response.status_code}")
